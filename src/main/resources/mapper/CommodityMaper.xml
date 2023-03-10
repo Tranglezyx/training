@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mytraining.mapper.CommodityMapper">
+
+    <insert id="add">
+        insert into
+        <bind name="tableName" value="'t_commodity' + suffix"/>
+        ${tableName} (price, name, sku, num, description)
+        values (#{price},#{name},#{sku},#{num},#{description})
+    </insert>
+
+    <select id="list" resultType="com.example.mytraining.entity.Commodity">
+        select * from
+        <bind name="tableName" value="'t_commodity' + suffix"/>
+        ${tableName}
+        <where>
+            <if test="name != null and name != ''">
+                <bind name="nameLike" value="'%' + name + '%'"/>
+                name like #{nameLike}
+            </if>
+            <if test="sku != null and sku != ''">
+                and sku = #{sku}
+            </if>
+        </where>
+    </select>
+</mapper>
