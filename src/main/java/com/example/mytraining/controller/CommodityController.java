@@ -75,4 +75,9 @@ public class CommodityController {
     public BaseResult<String> startTask() {
         return BaseResult.success(commodityService.startTask());
     }
+
+    @PostMapping("/testScript")
+    public BaseResult<String> testScript() {
+        return BaseResult.success("<script type=\"text/javascript\">alert(1)</script>");
+    }
 }

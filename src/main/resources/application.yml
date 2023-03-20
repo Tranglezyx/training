@@ -36,6 +36,3 @@ spring:
 logging:
   level:
     com: debug
-
-pagehelper:
-  helperDialect: mysql

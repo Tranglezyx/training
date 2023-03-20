@@ -29,5 +29,6 @@ public class Commodity {
     private String description;
 
     @TableField(exist = false)
+    @ExcelIgnore
     private String suffix;
 }
